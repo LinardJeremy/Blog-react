@@ -1,18 +1,29 @@
-import './App.css';
 import Navbar from './Navbar';
 import Home from './Home';
+import Create from './Create';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import BlogDetails from './BlogDetails';
 
 function App() {
-  const likes = 50;
   return (
+    <Router>
     <div className="App">
       <Navbar />
       <div className="content">
-       <Home />
-        <p>Liked { likes } times</p>
-        <p>{ 10 }</p>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/create">
+            <Create />
+          </Route>
+          <Route path="/blogs/:id">
+            <BlogDetails />
+          </Route>
+        </Switch>
       </div>
     </div>
+    </Router>
   );
 }
 
